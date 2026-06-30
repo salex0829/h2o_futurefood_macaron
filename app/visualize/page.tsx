@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { SurveyAnswer, MacaronId } from "@/types/survey";
-import { getSurveyAnswers, clearSurveyAnswers } from "@/lib/storage";
+import { subscribeSurveyAnswers, clearSurveyAnswers } from "@/lib/storage";
 import { SAMPLE_ANSWERS } from "@/lib/sampleData";
 import { computeSummary } from "@/lib/aggregate";
 import SensoryMap from "@/components/SensoryMap";
@@ -29,14 +29,16 @@ export default function VisualizePage() {
   const [activeTab, setActiveTab] = useState<ViewTab>("map");
 
   useEffect(() => {
-    const stored = getSurveyAnswers();
-    if (stored.length === 0) {
-      setAllAnswers(SAMPLE_ANSWERS);
-      setIsSample(true);
-    } else {
-      setAllAnswers(stored);
-      setIsSample(false);
-    }
+    const unsubscribe = subscribeSurveyAnswers((stored) => {
+      if (stored.length === 0) {
+        setAllAnswers(SAMPLE_ANSWERS);
+        setIsSample(true);
+      } else {
+        setAllAnswers(stored);
+        setIsSample(false);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
   const handleReset = () => {
