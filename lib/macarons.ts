@@ -16,7 +16,7 @@ export const MACARONS: Macaron[] = [
   {
     id: "KAWANISHI-2026",
     label: "KAWANISHI-2026",
-    description: "水辺、土壌、生活の気配が重なる香り",
+    description: "都市の密度、地下、人工物の熱を含む香り",
   },
   {
     id: "TAKARAZUKA-1887",
@@ -26,6 +26,6 @@ export const MACARONS: Macaron[] = [
   {
     id: "UMEDA-BC4000",
     label: "UMEDA-BC4000",
-    description: "都市の密度、地下、人工物の熱を含む香り",
+    description: "水辺、土壌、生活の気配が重なる香り",
   },
 ];
