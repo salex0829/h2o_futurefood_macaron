@@ -67,7 +67,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
   return (
     <div className="min-h-screen flex flex-col">
       {/* Sticky header */}
-      <div className="sticky top-0 bg-[#E8E3D9]/95 backdrop-blur-sm z-10 px-6 pt-6 pb-4 border-b border-stone-300/50">
+      <div className="sticky top-0 bg-white/95 backdrop-blur-sm z-10 px-6 pt-6 pb-4 border-b border-stone-100">
         <div className="max-w-2xl mx-auto">
           {/* Nav row */}
           <div className="flex items-start gap-3 mb-3">

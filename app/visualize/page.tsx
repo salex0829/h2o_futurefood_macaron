@@ -59,7 +59,7 @@ export default function VisualizePage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-[#E8E3D9]/95 backdrop-blur-sm border-b border-stone-300/50">
+      <header className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-stone-100">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold text-stone-950 tracking-tight">
