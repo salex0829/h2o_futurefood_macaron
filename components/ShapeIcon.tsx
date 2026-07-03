@@ -354,6 +354,178 @@ export default function ShapeIcon({ type, size = 48, color = "#6b7280" }: Props)
         </svg>
       );
 
+    /* ── オノマトペ専用（形グリッドとは異なるアイコン）──── */
+    case "onoma-fuwafuwa":
+      // 横並びの2つの柔らかい楕円（綿のような浮遊感）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <ellipse cx={c - r * 0.42} cy={c} rx={r * 0.42} ry={r * 0.35} fill={color} opacity={0.75} />
+          <ellipse cx={c + r * 0.42} cy={c} rx={r * 0.42} ry={r * 0.35} fill={color} opacity={0.6} />
+        </svg>
+      );
+    case "onoma-jinwari":
+      // 中心点＋2つの薄い同心円（ゆっくり広がる温もり）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <circle cx={c} cy={c} r={r * 0.18} fill={color} />
+          <circle cx={c} cy={c} r={r * 0.52} fill="none" stroke={color} strokeWidth={s * 0.06} opacity={0.6} />
+          <circle cx={c} cy={c} r={r * 0.88} fill="none" stroke={color} strokeWidth={s * 0.04} opacity={0.3} />
+        </svg>
+      );
+    case "onoma-suutto": {
+      // 横向き彗星（左が太く右へ先細り）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <path
+            d={`M${s * 0.1},${c - s * 0.11} Q${s * 0.55},${c - s * 0.03} ${s * 0.9},${c} Q${s * 0.55},${c + s * 0.03} ${s * 0.1},${c + s * 0.11}Z`}
+            fill={color}
+          />
+        </svg>
+      );
+    }
+    case "onoma-punto": {
+      // 4尖頭の星（針のような鋭さ）
+      const pts4 = Array.from({ length: 8 }, (_, i) => {
+        const a = (Math.PI * i) / 4 - Math.PI / 2;
+        const rr = i % 2 === 0 ? r * 0.92 : r * 0.18;
+        return `${c + rr * Math.cos(a)},${c + rr * Math.sin(a)}`;
+      }).join(" ");
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <polygon points={pts4} fill={color} />
+        </svg>
+      );
+    }
+    case "onoma-mowatto":
+      // 3つの重なり合う円の塊（密な圧迫感）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <circle cx={c - r * 0.32} cy={c + r * 0.15} r={r * 0.55} fill={color} opacity={0.75} />
+          <circle cx={c + r * 0.32} cy={c + r * 0.15} r={r * 0.55} fill={color} opacity={0.75} />
+          <circle cx={c} cy={c - r * 0.22} r={r * 0.52} fill={color} opacity={0.85} />
+        </svg>
+      );
+    case "onoma-piritto":
+      // 鋭いジグザグ（W字形のとがった波）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <polyline
+            points={`${s * 0.1},${c - r * 0.5} ${s * 0.32},${c + r * 0.5} ${s * 0.54},${c - r * 0.5} ${s * 0.76},${c + r * 0.5} ${s * 0.9},${c - r * 0.5}`}
+            fill="none"
+            stroke={color}
+            strokeWidth={s * 0.1}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "onoma-torotto":
+      // 上が広く下が細まるとろみ形（粘性のある垂れ）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <path
+            d={`M${c - r * 0.55},${s * 0.28} Q${c - r * 0.55},${s * 0.12} ${c},${s * 0.12} Q${c + r * 0.55},${s * 0.12} ${c + r * 0.55},${s * 0.28} L${c + r * 0.25},${s * 0.72} Q${c},${s * 0.9} ${c - r * 0.25},${s * 0.72} Z`}
+            fill={color}
+          />
+        </svg>
+      );
+    case "onoma-sarasara":
+      // 4本の斜めの平行線（砂・絹のような流れ）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          {[0.22, 0.38, 0.54, 0.7].map((t, i) => (
+            <line key={i}
+              x1={s * t - s * 0.14} y1={s * 0.12}
+              x2={s * t + s * 0.14} y2={s * 0.88}
+              stroke={color} strokeWidth={s * 0.07} strokeLinecap="round"
+              opacity={1 - i * 0.15}
+            />
+          ))}
+        </svg>
+      );
+    case "onoma-honnori":
+      // 大きな薄いリング＋小さな中心点（かすかな印象）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <circle cx={c} cy={c} r={r * 0.92} fill="none" stroke={color} strokeWidth={s * 0.05} opacity={0.4} />
+          <circle cx={c} cy={c} r={r * 0.12} fill={color} opacity={0.55} />
+        </svg>
+      );
+    case "onoma-gutto":
+      // 向き合う2つの三角形（挟み込む力）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <polygon
+            points={`${s * 0.12},${s * 0.2} ${s * 0.12},${s * 0.8} ${s * 0.44},${c}`}
+            fill={color} opacity={0.85}
+          />
+          <polygon
+            points={`${s * 0.88},${s * 0.2} ${s * 0.88},${s * 0.8} ${s * 0.56},${c}`}
+            fill={color} opacity={0.85}
+          />
+        </svg>
+      );
+    case "onoma-shimijimi":
+      // 幅広の平らな楕円2重（じわじわ染み広がる）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <ellipse cx={c} cy={c} rx={r * 1.08} ry={r * 0.3} fill={color} opacity={0.7} />
+          <ellipse cx={c} cy={c} rx={r * 0.65} ry={r * 0.18} fill={color} opacity={0.5} />
+        </svg>
+      );
+    case "onoma-futto":
+      // 上に小さな円＋縦線（ふっと立ち上る息）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <circle cx={c} cy={s * 0.28} r={r * 0.22} fill={color} />
+          <line x1={c} y1={s * 0.38} x2={c} y2={s * 0.82} stroke={color} strokeWidth={s * 0.08} strokeLinecap="round" />
+        </svg>
+      );
+    case "onoma-mutto":
+      // 3本の縦向き波線（むっと立ちこめる蒸気）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          {[0.28, 0.5, 0.72].map((x, i) => (
+            <path key={i}
+              d={`M${s * x},${s * 0.82} C${s * x + s * 0.08},${s * 0.65} ${s * x - s * 0.08},${s * 0.48} ${s * x},${s * 0.32} C${s * x + s * 0.08},${s * 0.18} ${s * x - s * 0.08},${s * 0.12} ${s * x},${s * 0.1}`}
+              fill="none"
+              stroke={color}
+              strokeWidth={s * 0.08}
+              strokeLinecap="round"
+              opacity={0.8 - i * 0.1}
+            />
+          ))}
+        </svg>
+      );
+    case "onoma-kyutto":
+      // 砂時計形（上下の三角が中心で接する）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <polygon
+            points={`${s * 0.15},${s * 0.12} ${s * 0.85},${s * 0.12} ${c},${c}`}
+            fill={color} opacity={0.85}
+          />
+          <polygon
+            points={`${s * 0.15},${s * 0.88} ${s * 0.85},${s * 0.88} ${c},${c}`}
+            fill={color} opacity={0.85}
+          />
+        </svg>
+      );
+    case "onoma-yurayura":
+      // 対になる2本のS曲線（ゆらゆら揺れる動き）
+      return (
+        <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>
+          <path
+            d={`M${s * 0.12},${s * 0.72} C${s * 0.12},${s * 0.5} ${s * 0.5},${s * 0.5} ${s * 0.5},${s * 0.3} C${s * 0.5},${s * 0.12} ${s * 0.82},${s * 0.12} ${s * 0.88},${s * 0.3}`}
+            fill="none" stroke={color} strokeWidth={s * 0.09} strokeLinecap="round" opacity={0.85}
+          />
+          <path
+            d={`M${s * 0.12},${s * 0.7} C${s * 0.18},${s * 0.88} ${s * 0.5},${s * 0.88} ${s * 0.5},${s * 0.68} C${s * 0.5},${s * 0.5} ${s * 0.82},${s * 0.5} ${s * 0.88},${s * 0.7}`}
+            fill="none" stroke={color} strokeWidth={s * 0.09} strokeLinecap="round" opacity={0.55}
+          />
+        </svg>
+      );
+
     default:
       return (
         <svg width={s} height={s} viewBox={`0 0 ${s} ${s}`}>

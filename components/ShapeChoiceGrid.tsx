@@ -65,7 +65,7 @@ export default function ShapeChoiceGrid({ selected, onSelect }: Props) {
         })}
       </div>
 
-      {/* Onomatopoeia grid — word itself as visual */}
+      {/* Onomatopoeia grid — unique icons distinct from shape grid */}
       <div className="mt-5 pt-4 border-t border-stone-100">
         <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
           {onomatopoeia.map((item) => {
@@ -75,18 +75,18 @@ export default function ShapeChoiceGrid({ selected, onSelect }: Props) {
                 key={item.type}
                 onClick={() => onSelect(item)}
                 className={[
-                  "flex items-center justify-center py-3 px-2 rounded-2xl border-2 transition-all duration-150 min-h-[64px]",
+                  "flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl border-2 transition-all duration-150",
                   sel
                     ? "border-stone-500 bg-stone-50 shadow-sm scale-105"
                     : "border-stone-100 bg-white hover:border-stone-300 hover:bg-stone-50",
                 ].join(" ")}
               >
-                <span
-                  className={[
-                    "text-sm font-medium leading-tight text-center",
-                    sel ? "text-stone-700" : "text-stone-400",
-                  ].join(" ")}
-                >
+                <ShapeIcon
+                  type={item.type}
+                  size={36}
+                  color={sel ? "#78716c" : "#c4bdb7"}
+                />
+                <span className="text-[10px] text-stone-500 font-medium leading-none">
                   {item.label}
                 </span>
               </button>
