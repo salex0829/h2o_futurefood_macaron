@@ -18,13 +18,13 @@ export default function CompletionScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
       <div className="w-full max-w-sm text-center">
         <p className="text-xs text-stone-400 font-mono tracking-[0.3em] uppercase mb-6">
           Complete
         </p>
 
-        <h1 className="text-2xl font-bold text-stone-700 mb-3 leading-snug">
+        <h1 className="text-2xl font-bold text-stone-950 mb-3 leading-snug">
           すべての評価が完了しました
         </h1>
 
@@ -35,7 +35,7 @@ export default function CompletionScreen() {
         <div className="flex flex-col gap-4">
           <button
             onClick={() => router.push("/visualize")}
-            className="bg-stone-700 text-white text-sm font-medium px-12 py-3.5 rounded-full shadow hover:bg-stone-600 active:scale-95 transition-all tracking-widest"
+            className="bg-stone-950 text-white text-sm font-medium px-12 py-3.5 rounded-full shadow hover:bg-stone-800 active:scale-95 transition-all tracking-widest"
           >
             ビジュアライズを見る
           </button>

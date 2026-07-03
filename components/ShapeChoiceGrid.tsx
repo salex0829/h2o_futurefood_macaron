@@ -28,9 +28,9 @@ export default function ShapeChoiceGrid({ selected, onSelect }: Props) {
         {selected ? (
           <>
             {!isOnoma(selected.type) && (
-              <ShapeIcon type={selected.type} size={32} color="#78716c" />
+              <ShapeIcon type={selected.type} size={32} color="#111111" />
             )}
-            <p className="text-sm font-medium text-stone-700">{selected.label}</p>
+            <p className="text-sm font-medium text-stone-950">{selected.label}</p>
           </>
         ) : (
           <p className="text-sm text-stone-300">形を選んでください</p>
@@ -48,7 +48,7 @@ export default function ShapeChoiceGrid({ selected, onSelect }: Props) {
               className={[
                 "flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl border-2 transition-all duration-150",
                 sel
-                  ? "border-stone-500 bg-stone-50 shadow-sm scale-105"
+                  ? "border-stone-950 bg-stone-950 shadow-md scale-105"
                   : "border-stone-100 bg-white hover:border-stone-300 hover:bg-stone-50",
               ].join(" ")}
             >
@@ -77,16 +77,16 @@ export default function ShapeChoiceGrid({ selected, onSelect }: Props) {
                 className={[
                   "flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl border-2 transition-all duration-150",
                   sel
-                    ? "border-stone-500 bg-stone-50 shadow-sm scale-105"
+                    ? "border-stone-950 bg-stone-950 shadow-md scale-105"
                     : "border-stone-100 bg-white hover:border-stone-300 hover:bg-stone-50",
                 ].join(" ")}
               >
                 <ShapeIcon
                   type={item.type}
                   size={36}
-                  color={sel ? "#78716c" : "#c4bdb7"}
+                  color={sel ? "#ffffff" : "#c4bdb7"}
                 />
-                <span className="text-[10px] text-stone-500 font-medium leading-none">
+                <span className={["text-[10px] font-medium leading-none", sel ? "text-stone-200" : "text-stone-500"].join(" ")}>
                   {item.label}
                 </span>
               </button>

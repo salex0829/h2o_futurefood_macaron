@@ -6,7 +6,7 @@ type Props = {
 
 export default function StartScreen({ onStart }: Props) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
       <div className="max-w-xl w-full text-center">
         <div className="mb-6 flex justify-center gap-3">
           {["#D8D8D8", "#B0B0B0", "#787878"].map((color) => (
@@ -18,7 +18,7 @@ export default function StartScreen({ onStart }: Props) {
           ))}
         </div>
 
-        <h1 className="text-4xl font-bold text-stone-700 tracking-tight mb-3">
+        <h1 className="text-4xl font-bold text-stone-950 tracking-tight mb-3">
           色のないマカロン
         </h1>
         <p className="text-base text-stone-500 mb-8 tracking-wide">
@@ -37,7 +37,7 @@ export default function StartScreen({ onStart }: Props) {
 
         <button
           onClick={onStart}
-          className="bg-stone-700 text-white text-base font-medium px-12 py-4 rounded-full shadow hover:bg-stone-600 active:scale-95 transition-all duration-150 tracking-widest"
+          className="bg-stone-950 text-white text-base font-medium px-12 py-4 rounded-full shadow hover:bg-stone-800 active:scale-95 transition-all duration-150 tracking-widest"
         >
           はじめる
         </button>

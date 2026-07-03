@@ -23,7 +23,7 @@ export default function AnswerCard({ answer }: Props) {
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
-          <p className="text-base font-bold text-stone-700 leading-snug truncate">
+          <p className="text-base font-bold text-stone-950 leading-snug truncate">
             {answer.answers.scentName}
           </p>
         </div>

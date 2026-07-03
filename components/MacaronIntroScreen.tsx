@@ -25,7 +25,7 @@ export default function MacaronIntroScreen({
   onStart,
 }: Props) {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
       <div className="w-full max-w-sm text-center">
         {/* Macaron progress */}
         <p className="text-xs text-stone-400 font-mono tracking-[0.3em] uppercase mb-8">
@@ -50,7 +50,7 @@ export default function MacaronIntroScreen({
         {/* Start button */}
         <button
           onClick={onStart}
-          className="bg-stone-700 text-white text-sm font-medium px-12 py-3.5 rounded-full shadow hover:bg-stone-600 active:scale-95 transition-all tracking-widest"
+          className="bg-stone-950 text-white text-sm font-medium px-12 py-3.5 rounded-full shadow hover:bg-stone-800 active:scale-95 transition-all tracking-widest"
         >
           このマカロンを評価する
         </button>

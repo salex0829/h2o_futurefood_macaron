@@ -57,12 +57,12 @@ export default function VisualizePage() {
   const summary = useMemo(() => computeSummary(filtered), [filtered]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-stone-100">
+      <header className="sticky top-0 z-10 bg-[#E8E3D9]/95 backdrop-blur-sm border-b border-stone-300/50">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold text-stone-700 tracking-tight">
+            <h1 className="text-lg font-bold text-stone-950 tracking-tight">
               色のないマカロン
             </h1>
             <p className="text-xs text-stone-400">ビジュアライズ</p>
@@ -121,7 +121,7 @@ export default function VisualizePage() {
               className={[
                 "px-5 py-2 rounded-xl text-sm font-medium transition-all duration-150",
                 activeTab === tab.value
-                  ? "bg-white text-stone-700 shadow-sm"
+                  ? "bg-white text-stone-950 shadow-sm"
                   : "text-stone-400 hover:text-stone-600",
               ].join(" ")}
             >
@@ -136,7 +136,7 @@ export default function VisualizePage() {
             <div className="bg-white rounded-3xl border border-stone-100 shadow-sm p-6">
               <div className="flex items-end justify-between mb-6">
                 <div>
-                  <h2 className="text-base font-bold text-stone-700">感覚マップ</h2>
+                  <h2 className="text-base font-bold text-stone-950">感覚マップ</h2>
                   <p className="text-xs text-stone-400 mt-1">
                     X軸：自然的 ← → 都市的　Y軸：遠い ↑ 近い
                   </p>
@@ -158,7 +158,7 @@ export default function VisualizePage() {
         {activeTab === "list" && (
           <section>
             <div className="mb-4">
-              <h2 className="text-base font-bold text-stone-700">形と名前の一覧</h2>
+              <h2 className="text-base font-bold text-stone-950">形と名前の一覧</h2>
               <p className="text-xs text-stone-400 mt-1">
                 香りにつけられた名前と、選ばれた形・色を比較できます。
               </p>

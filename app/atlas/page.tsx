@@ -41,7 +41,7 @@ export default function AtlasPage() {
     tab === "ALL" ? answers : answers.filter((a) => a.macaronId === tab);
 
   return (
-    <main className="min-h-screen bg-[#FDFCF8]">
+    <main className="min-h-screen">
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className="px-6 pt-10 pb-7 border-b border-stone-100">
         <div className="max-w-4xl mx-auto">
@@ -50,7 +50,7 @@ export default function AtlasPage() {
             <span className="text-stone-200">|</span>
             <Link href="/visualize" className="hover:text-stone-600 transition-colors">VISUALIZE</Link>
           </p>
-          <h1 className="text-2xl font-bold text-stone-800 tracking-tight mb-2">
+          <h1 className="text-2xl font-bold text-stone-950 tracking-tight mb-2">
             Scent Landscape
           </h1>
           <p className="text-sm text-stone-400 leading-relaxed max-w-lg">

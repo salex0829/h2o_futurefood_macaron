@@ -72,7 +72,7 @@ export default function ColorChoiceGrid({ selected, onSelect }: Props) {
                   style={{
                     transform: isSelected ? "scale(1.06)" : "scale(1)",
                     boxShadow: isSelected
-                      ? `0 0 0 2px white, 0 0 0 4px ${fg === "#1c1917" ? "#78716c" : "#d6d3d1"}, 0 4px 12px rgba(0,0,0,0.12)`
+                      ? `0 0 0 2px white, 0 0 0 4px #111111, 0 4px 12px rgba(0,0,0,0.2)`
                       : "0 1px 3px rgba(0,0,0,0.08)",
                   }}
                 >

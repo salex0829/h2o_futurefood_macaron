@@ -65,9 +65,9 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
   const overallPercent = Math.round((overallCurrent / overallTotal) * 100);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Sticky header */}
-      <div className="sticky top-0 bg-white/90 backdrop-blur-sm z-10 px-6 pt-6 pb-4 border-b border-stone-100">
+      <div className="sticky top-0 bg-[#E8E3D9]/95 backdrop-blur-sm z-10 px-6 pt-6 pb-4 border-b border-stone-300/50">
         <div className="max-w-2xl mx-auto">
           {/* Nav row */}
           <div className="flex items-start gap-3 mb-3">
@@ -94,7 +94,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
           <div className="flex items-center gap-3">
             <div className="flex-1 h-1.5 bg-stone-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-stone-400 rounded-full transition-all duration-500 ease-out"
+                className="h-full bg-stone-950 rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${overallPercent}%` }}
               />
             </div>
@@ -138,7 +138,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
               hint="場所、時間帯、人、空気、感情など、自由に書いてください。"
             >
               <textarea
-                className="w-full rounded-2xl border border-stone-200 bg-white p-4 text-sm text-stone-700 placeholder-stone-300 focus:outline-none focus:border-stone-400 resize-none leading-relaxed shadow-sm"
+                className="w-full rounded-2xl border border-stone-200 bg-white p-4 text-sm text-stone-900 placeholder-stone-300 focus:outline-none focus:border-stone-900 resize-none leading-relaxed shadow-sm"
                 rows={5}
                 placeholder="例：雨上がりの帰り道、祖母の家、地下街を歩いていた夕方、誰かを待っていた時間など"
                 value={partial.memoryText ?? ""}
@@ -164,7 +164,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
                     className={[
                       "w-full py-4 px-6 rounded-2xl border-2 text-sm font-medium transition-all duration-150 text-left",
                       partial.intimacy?.value === opt.value
-                        ? "border-stone-500 bg-stone-50 text-stone-700 shadow-sm"
+                        ? "border-stone-950 bg-stone-950 text-white shadow-sm"
                         : "border-stone-100 bg-white text-stone-500 hover:border-stone-300",
                     ].join(" ")}
                   >
@@ -194,7 +194,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
                     className={[
                       "w-full py-4 px-6 rounded-2xl border-2 text-sm font-medium transition-all duration-150 text-left",
                       partial.urbanity?.value === opt.value
-                        ? "border-stone-500 bg-stone-50 text-stone-700 shadow-sm"
+                        ? "border-stone-950 bg-stone-950 text-white shadow-sm"
                         : "border-stone-100 bg-white text-stone-500 hover:border-stone-300",
                     ].join(" ")}
                   >
@@ -212,7 +212,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
             >
               <input
                 type="text"
-                className="w-full rounded-2xl border border-stone-200 bg-white p-4 text-base text-stone-700 placeholder-stone-300 focus:outline-none focus:border-stone-400 shadow-sm"
+                className="w-full rounded-2xl border border-stone-200 bg-white p-4 text-base text-stone-900 placeholder-stone-300 focus:outline-none focus:border-stone-900 shadow-sm"
                 placeholder="例：雨上がりの帰り道、午後4時の地下街、祖母の庭、眠る駅前"
                 value={partial.scentName ?? ""}
                 onChange={(e) =>
@@ -227,7 +227,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
               <button
                 onClick={goNext}
                 disabled={!canProceed()}
-                className="bg-stone-700 text-white text-sm font-medium px-10 py-3.5 rounded-full shadow hover:bg-stone-600 active:scale-95 transition-all tracking-widest disabled:opacity-30 disabled:cursor-not-allowed"
+                className="bg-stone-950 text-white text-sm font-medium px-10 py-3.5 rounded-full shadow hover:bg-stone-800 active:scale-95 transition-all tracking-widest disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 次へ
               </button>
@@ -235,7 +235,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
               <button
                 onClick={handleFinish}
                 disabled={!canProceed()}
-                className="bg-rose-400 text-white text-sm font-medium px-10 py-3.5 rounded-full shadow hover:bg-rose-500 active:scale-95 transition-all tracking-widest disabled:opacity-30 disabled:cursor-not-allowed"
+                className="bg-stone-950 text-white text-sm font-medium px-10 py-3.5 rounded-full shadow hover:bg-stone-800 active:scale-95 transition-all tracking-widest disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 記録する
               </button>
@@ -258,7 +258,7 @@ function StepWrapper({
 }) {
   return (
     <div>
-      <h2 className="text-xl font-bold text-stone-700 mb-2 leading-snug">{question}</h2>
+      <h2 className="text-xl font-bold text-stone-950 mb-2 leading-snug">{question}</h2>
       {hint && <p className="text-sm text-stone-400 mb-6 leading-relaxed">{hint}</p>}
       <div className="mt-2">{children}</div>
     </div>
