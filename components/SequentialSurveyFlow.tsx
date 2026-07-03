@@ -7,8 +7,9 @@ import { getParticipantId, saveSurveyAnswer } from "@/lib/storage";
 import MacaronIntroScreen from "./MacaronIntroScreen";
 import QuestionStep from "./QuestionStep";
 import CompletionScreen from "./CompletionScreen";
+import WaitingScreen from "./WaitingScreen";
 
-type FlowScreen = "intro" | "survey" | "complete";
+type FlowScreen = "intro" | "survey" | "waiting" | "complete";
 
 export default function SequentialSurveyFlow() {
   const [flowScreen, setFlowScreen] = useState<FlowScreen>("intro");
@@ -27,8 +28,7 @@ export default function SequentialSurveyFlow() {
     });
 
     if (currentMacaronIndex < MACARONS.length - 1) {
-      setCurrentMacaronIndex((i) => i + 1);
-      setFlowScreen("intro");
+      setFlowScreen("waiting");
     } else {
       setFlowScreen("complete");
     }
@@ -36,6 +36,19 @@ export default function SequentialSurveyFlow() {
 
   if (flowScreen === "complete") {
     return <CompletionScreen />;
+  }
+
+  if (flowScreen === "waiting") {
+    return (
+      <WaitingScreen
+        nextMacaronIndex={currentMacaronIndex + 1}
+        totalMacarons={MACARONS.length}
+        onReady={() => {
+          setCurrentMacaronIndex((i) => i + 1);
+          setFlowScreen("intro");
+        }}
+      />
+    );
   }
 
   if (flowScreen === "intro") {
