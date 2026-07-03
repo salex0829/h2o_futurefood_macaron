@@ -5,7 +5,6 @@ import { SurveyAnswer, MacaronId } from "@/types/survey";
 import { subscribeSurveyAnswers } from "@/lib/storage";
 import { computeSummary } from "@/lib/aggregate";
 import SensoryMap from "./SensoryMap";
-import ShapeNameList from "./ShapeNameList";
 
 type Props = {
   macaronId: MacaronId;
@@ -14,8 +13,6 @@ type Props = {
   onNext: () => void;
 };
 
-type ViewTab = "map" | "list";
-
 export default function MacaronResultScreen({
   macaronId,
   macaronIndex,
@@ -23,7 +20,6 @@ export default function MacaronResultScreen({
   onNext,
 }: Props) {
   const [answers, setAnswers] = useState<SurveyAnswer[]>([]);
-  const [activeTab, setActiveTab] = useState<ViewTab>("map");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -86,33 +82,6 @@ export default function MacaronResultScreen({
         </div>
       </div>
 
-      {/* Tab switcher */}
-      <div className="px-6 pt-5">
-        <div className="max-w-2xl mx-auto">
-          <div className="flex gap-1 bg-stone-100 p-1 rounded-2xl w-fit">
-            {(
-              [
-                { label: "感覚マップ", value: "map" as ViewTab },
-                { label: "形と名前", value: "list" as ViewTab },
-              ] as const
-            ).map((tab) => (
-              <button
-                key={tab.value}
-                onClick={() => setActiveTab(tab.value)}
-                className={[
-                  "px-5 py-2 rounded-xl text-sm font-medium transition-all duration-150",
-                  activeTab === tab.value
-                    ? "bg-white text-stone-950 shadow-sm"
-                    : "text-stone-400 hover:text-stone-600",
-                ].join(" ")}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Content */}
       <div className="flex-1 px-6 py-6">
         <div className="max-w-2xl mx-auto space-y-6">
@@ -121,19 +90,12 @@ export default function MacaronResultScreen({
               データを読み込み中…
             </p>
           ) : (
-            <>
-              {activeTab === "map" && (
-                <div className="bg-white rounded-3xl border border-stone-100 shadow-sm p-6">
-                  <p className="text-xs text-stone-400 mb-4">
-                    X軸：自然的 ← → 都市的　Y軸：遠い ↑ 近い
-                  </p>
-                  <SensoryMap answers={answers} />
-                </div>
-              )}
-              {activeTab === "list" && (
-                <ShapeNameList answers={answers} />
-              )}
-            </>
+            <div className="bg-white rounded-3xl border border-stone-100 shadow-sm p-6">
+              <p className="text-xs text-stone-400 mb-4">
+                X軸：自然的 ← → 都市的　Y軸：遠い ↑ 近い
+              </p>
+              <SensoryMap answers={answers} />
+            </div>
           )}
 
           <div className="flex justify-end pt-4 pb-8">
