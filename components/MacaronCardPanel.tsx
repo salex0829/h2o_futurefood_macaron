@@ -7,7 +7,7 @@ import { Macaron } from "@/lib/macarons";
 const MacaronScene = dynamic(() => import("./MacaronScene"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full bg-gradient-to-b from-stone-50 to-amber-50/30 animate-pulse" />
+    <div className="w-full h-full bg-stone-50 animate-pulse" />
   ),
 });
 
@@ -81,7 +81,7 @@ export default function MacaronCardPanel({ macaron, isAnswered, onClick }: Props
             "shrink-0 mt-0.5 text-[10px] px-2.5 py-1 rounded-full font-medium whitespace-nowrap",
             isAnswered
               ? "bg-stone-100 text-stone-400"
-              : "bg-rose-50 text-rose-400",
+              : "bg-stone-100 text-stone-400",
           ].join(" ")}
         >
           {isAnswered ? "評価済み" : "未評価"}

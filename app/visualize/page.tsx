@@ -57,13 +57,13 @@ export default function VisualizePage() {
   const summary = useMemo(() => computeSummary(filtered), [filtered]);
 
   return (
-    <div className="min-h-screen bg-amber-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="sticky top-0 z-10 bg-amber-50/90 backdrop-blur-sm border-b border-stone-100">
+      <header className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-stone-100">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold text-stone-700 tracking-tight">
-              香りの地図室
+              色のないマカロン
             </h1>
             <p className="text-xs text-stone-400">ビジュアライズ</p>
           </div>
@@ -76,7 +76,7 @@ export default function VisualizePage() {
             </Link>
             <button
               onClick={handleReset}
-              className="text-xs text-rose-400 hover:text-rose-600 border border-rose-200 hover:border-rose-400 px-3 py-1.5 rounded-full transition-all"
+              className="text-xs text-stone-400 hover:text-stone-600 border border-stone-200 hover:border-stone-400 px-3 py-1.5 rounded-full transition-all"
             >
               データをリセット
             </button>
@@ -87,7 +87,7 @@ export default function VisualizePage() {
       <main className="max-w-4xl mx-auto px-6 py-8 space-y-8">
         {/* Sample data notice */}
         {isSample && (
-          <div className="bg-amber-100 border border-amber-200 rounded-2xl px-5 py-3 text-sm text-amber-700">
+          <div className="bg-stone-100 border border-stone-200 rounded-2xl px-5 py-3 text-sm text-stone-600">
             まだ評価データがないため、サンプルデータを表示しています。
           </div>
         )}

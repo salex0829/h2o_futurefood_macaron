@@ -6,20 +6,20 @@ type Props = {
 
 export default function StartScreen({ onStart }: Props) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-amber-50 px-6 py-16">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6 py-16">
       <div className="max-w-xl w-full text-center">
         <div className="mb-6 flex justify-center gap-3">
-          {["#F7C8D0", "#BEE8D4", "#C9B6E4"].map((color) => (
+          {["#D8D8D8", "#B0B0B0", "#787878"].map((color) => (
             <div
               key={color}
-              className="w-10 h-10 rounded-full shadow-sm border border-white"
+              className="w-10 h-10 rounded-full shadow-sm border border-stone-100"
               style={{ backgroundColor: color }}
             />
           ))}
         </div>
 
         <h1 className="text-4xl font-bold text-stone-700 tracking-tight mb-3">
-          香りの地図室
+          色のないマカロン
         </h1>
         <p className="text-base text-stone-500 mb-8 tracking-wide">
           食べて香った体験を、色・形・名前で記録する

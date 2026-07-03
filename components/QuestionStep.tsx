@@ -65,9 +65,9 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
   const overallPercent = Math.round((overallCurrent / overallTotal) * 100);
 
   return (
-    <div className="min-h-screen bg-amber-50 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Sticky header */}
-      <div className="sticky top-0 bg-amber-50/90 backdrop-blur-sm z-10 px-6 pt-6 pb-4 border-b border-stone-100">
+      <div className="sticky top-0 bg-white/90 backdrop-blur-sm z-10 px-6 pt-6 pb-4 border-b border-stone-100">
         <div className="max-w-2xl mx-auto">
           {/* Nav row */}
           <div className="flex items-start gap-3 mb-3">
@@ -94,7 +94,7 @@ export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBa
           <div className="flex items-center gap-3">
             <div className="flex-1 h-1.5 bg-stone-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-rose-300 to-violet-300 rounded-full transition-all duration-500 ease-out"
+                className="h-full bg-stone-400 rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${overallPercent}%` }}
               />
             </div>

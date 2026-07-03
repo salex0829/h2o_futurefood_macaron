@@ -18,7 +18,7 @@ export default function CompletionScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-amber-50 flex flex-col items-center justify-center px-6 py-16">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-16">
       <div className="w-full max-w-sm text-center">
         <p className="text-xs text-stone-400 font-mono tracking-[0.3em] uppercase mb-6">
           Complete

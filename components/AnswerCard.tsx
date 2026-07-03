@@ -8,9 +8,9 @@ type Props = {
 };
 
 const MACARON_ACCENT: Record<string, string> = {
-  "KAWANISHI-2026": "bg-emerald-50 text-emerald-600",
-  "TAKARAZUKA-1887": "bg-purple-50 text-purple-600",
-  "UMEDA-BC4000": "bg-amber-50 text-amber-600",
+  "KAWANISHI-2026": "bg-stone-100 text-stone-500",
+  "TAKARAZUKA-1887": "bg-stone-100 text-stone-500",
+  "UMEDA-BC4000": "bg-stone-100 text-stone-500",
 };
 
 export default function AnswerCard({ answer }: Props) {
