@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MacaronId, PartialAnswers } from "@/types/survey";
 import { MACARONS } from "@/lib/macarons";
 import ColorChoiceGrid from "./ColorChoiceGrid";
@@ -28,6 +28,10 @@ const TOTAL_STEPS = 6;
 export default function QuestionStep({ macaronId, macaronIndex, onComplete, onBack }: Props) {
   const [step, setStep] = useState(1);
   const [partial, setPartial] = useState<PartialAnswers>({});
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [step]);
 
   const goNext = () => {
     if (step < TOTAL_STEPS) setStep(step + 1);
