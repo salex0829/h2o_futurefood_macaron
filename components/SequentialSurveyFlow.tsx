@@ -12,7 +12,11 @@ import MacaronResultScreen from "./MacaronResultScreen";
 
 type FlowScreen = "intro" | "survey" | "result" | "waiting" | "complete";
 
-export default function SequentialSurveyFlow() {
+type Props = {
+  onBack: () => void;
+};
+
+export default function SequentialSurveyFlow({ onBack }: Props) {
   const [flowScreen, setFlowScreen] = useState<FlowScreen>("intro");
   const [currentMacaronIndex, setCurrentMacaronIndex] = useState(0);
 
@@ -61,6 +65,7 @@ export default function SequentialSurveyFlow() {
           setCurrentMacaronIndex((i) => i + 1);
           setFlowScreen("intro");
         }}
+        onBack={() => setFlowScreen("result")}
       />
     );
   }
@@ -72,6 +77,14 @@ export default function SequentialSurveyFlow() {
         macaronIndex={currentMacaronIndex}
         totalMacarons={MACARONS.length}
         onStart={() => setFlowScreen("survey")}
+        onBack={() => {
+          if (currentMacaronIndex === 0) {
+            onBack();
+          } else {
+            setCurrentMacaronIndex((i) => i - 1);
+            setFlowScreen("waiting");
+          }
+        }}
       />
     );
   }

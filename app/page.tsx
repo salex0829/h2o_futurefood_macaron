@@ -13,5 +13,5 @@ export default function SurveyPage() {
     return <StartScreen onStart={() => setScreen("flow")} />;
   }
 
-  return <SequentialSurveyFlow />;
+  return <SequentialSurveyFlow onBack={() => setScreen("start")} />;
 }
