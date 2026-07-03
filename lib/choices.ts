@@ -8,6 +8,7 @@ export type ColorChoice = {
 export type ShapeChoice = {
   label: string;
   type: string;
+  category?: "shape" | "onoma";
 };
 
 export const COLOR_CATEGORIES = [
@@ -136,6 +137,22 @@ export const SENSED_SHAPES: ShapeChoice[] = [
   { label: "しみ",     type: "stain"      },
   { label: "うねり",   type: "undulation" },
   { label: "霧",       type: "mist"       },
+  // オノマトペ
+  { label: "ふわふわ", type: "onoma-fuwafuwa", category: "onoma" },
+  { label: "じんわり", type: "onoma-jinwari",  category: "onoma" },
+  { label: "すうっと", type: "onoma-suutto",   category: "onoma" },
+  { label: "ぷんと",   type: "onoma-punto",    category: "onoma" },
+  { label: "もわっと", type: "onoma-mowatto",  category: "onoma" },
+  { label: "ぴりっと", type: "onoma-piritto",  category: "onoma" },
+  { label: "とろっと", type: "onoma-torotto",  category: "onoma" },
+  { label: "さらさら", type: "onoma-sarasara",  category: "onoma" },
+  { label: "ほんのり", type: "onoma-honnori",  category: "onoma" },
+  { label: "ぐっと",   type: "onoma-gutto",    category: "onoma" },
+  { label: "しみじみ", type: "onoma-shimijimi", category: "onoma" },
+  { label: "ふっと",   type: "onoma-futto",    category: "onoma" },
+  { label: "むっと",   type: "onoma-mutto",    category: "onoma" },
+  { label: "きゅっと", type: "onoma-kyutto",   category: "onoma" },
+  { label: "ゆらゆら", type: "onoma-yurayura", category: "onoma" },
 ];
 
 export const INTIMACY_OPTIONS = [
