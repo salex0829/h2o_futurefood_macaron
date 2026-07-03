@@ -9,6 +9,7 @@ export type ShapeChoice = {
   label: string;
   type: string;
   category?: "shape" | "onoma";
+  icon?: string; // shape type used as visual icon for onoma entries
 };
 
 export const COLOR_CATEGORIES = [
@@ -138,21 +139,21 @@ export const SENSED_SHAPES: ShapeChoice[] = [
   { label: "うねり",   type: "undulation" },
   { label: "霧",       type: "mist"       },
   // オノマトペ
-  { label: "ふわふわ", type: "onoma-fuwafuwa", category: "onoma" },
-  { label: "じんわり", type: "onoma-jinwari",  category: "onoma" },
-  { label: "すうっと", type: "onoma-suutto",   category: "onoma" },
-  { label: "ぷんと",   type: "onoma-punto",    category: "onoma" },
-  { label: "もわっと", type: "onoma-mowatto",  category: "onoma" },
-  { label: "ぴりっと", type: "onoma-piritto",  category: "onoma" },
-  { label: "とろっと", type: "onoma-torotto",  category: "onoma" },
-  { label: "さらさら", type: "onoma-sarasara",  category: "onoma" },
-  { label: "ほんのり", type: "onoma-honnori",  category: "onoma" },
-  { label: "ぐっと",   type: "onoma-gutto",    category: "onoma" },
-  { label: "しみじみ", type: "onoma-shimijimi", category: "onoma" },
-  { label: "ふっと",   type: "onoma-futto",    category: "onoma" },
-  { label: "むっと",   type: "onoma-mutto",    category: "onoma" },
-  { label: "きゅっと", type: "onoma-kyutto",   category: "onoma" },
-  { label: "ゆらゆら", type: "onoma-yurayura", category: "onoma" },
+  { label: "ふわふわ", type: "onoma-fuwafuwa", category: "onoma", icon: "cloud"      },
+  { label: "じんわり", type: "onoma-jinwari",  category: "onoma", icon: "stain"      },
+  { label: "すうっと", type: "onoma-suutto",   category: "onoma", icon: "thread"     },
+  { label: "ぷんと",   type: "onoma-punto",    category: "onoma", icon: "radiation"  },
+  { label: "もわっと", type: "onoma-mowatto",  category: "onoma", icon: "smoke"      },
+  { label: "ぴりっと", type: "onoma-piritto",  category: "onoma", icon: "crystal"    },
+  { label: "とろっと", type: "onoma-torotto",  category: "onoma", icon: "drop"       },
+  { label: "さらさら", type: "onoma-sarasara", category: "onoma", icon: "wave"       },
+  { label: "ほんのり", type: "onoma-honnori",  category: "onoma", icon: "blur"       },
+  { label: "ぐっと",   type: "onoma-gutto",    category: "onoma", icon: "grain"      },
+  { label: "しみじみ", type: "onoma-shimijimi", category: "onoma", icon: "layer"     },
+  { label: "ふっと",   type: "onoma-futto",    category: "onoma", icon: "feather"    },
+  { label: "むっと",   type: "onoma-mutto",    category: "onoma", icon: "mist"       },
+  { label: "きゅっと", type: "onoma-kyutto",   category: "onoma", icon: "spiral"     },
+  { label: "ゆらゆら", type: "onoma-yurayura", category: "onoma", icon: "undulation" },
 ];
 
 export const INTIMACY_OPTIONS = [

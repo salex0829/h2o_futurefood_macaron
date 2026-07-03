@@ -81,18 +81,18 @@ export default function ShapeChoiceGrid({ selected, onSelect }: Props) {
                 key={item.type}
                 onClick={() => onSelect(item)}
                 className={[
-                  "flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-2xl border-2 transition-all duration-150 min-h-[72px]",
+                  "flex flex-col items-center gap-1.5 py-3 px-2 rounded-2xl border-2 transition-all duration-150",
                   sel
                     ? "border-stone-500 bg-stone-50 shadow-sm scale-105"
                     : "border-stone-100 bg-white hover:border-stone-300 hover:bg-stone-50",
                 ].join(" ")}
               >
-                <span
-                  className={[
-                    "text-base font-bold leading-none tracking-tight",
-                    sel ? "text-stone-600" : "text-stone-300",
-                  ].join(" ")}
-                >
+                <ShapeIcon
+                  type={item.icon ?? "blur"}
+                  size={36}
+                  color={sel ? "#78716c" : "#c4bdb7"}
+                />
+                <span className="text-[10px] text-stone-500 font-medium leading-none">
                   {item.label}
                 </span>
               </button>
