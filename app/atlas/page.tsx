@@ -29,7 +29,6 @@ export default function AtlasPage() {
         setAnswers(SAMPLE_ANSWERS);
         return;
       }
-      // Per-macaron fallback: macarons with no real answers use sample data
       const realIds = new Set(stored.map((a) => a.macaronId));
       const sampleFill = SAMPLE_ANSWERS.filter((a) => !realIds.has(a.macaronId));
       setAnswers([...stored, ...sampleFill]);
@@ -41,33 +40,27 @@ export default function AtlasPage() {
     tab === "ALL" ? answers : answers.filter((a) => a.macaronId === tab);
 
   return (
-    <main className="min-h-screen">
-      {/* ── Header ─────────────────────────────────────────────────────── */}
-      <header className="px-6 pt-10 pb-7 border-b border-stone-100">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-[10px] font-mono text-stone-300 tracking-[0.25em] uppercase mb-4 flex gap-3">
-            <Link href="/" className="hover:text-stone-600 transition-colors">← HOME</Link>
-            <span className="text-stone-200">|</span>
-            <Link href="/visualize" className="hover:text-stone-600 transition-colors">VISUALIZE</Link>
-          </p>
-          <h1 className="text-2xl font-bold text-stone-950 tracking-tight mb-2">
-            Scent Landscape
-          </h1>
-          <p className="text-sm text-stone-400 leading-relaxed max-w-lg">
-            各マカロンに対して記録された色と形を、感覚の風景として可視化したアーカイブ
-          </p>
-        </div>
-      </header>
+    <div className="h-screen overflow-hidden flex flex-col">
+      {/* ── Compact top bar ───────────────────────────────────────────────── */}
+      <header className="flex-shrink-0 flex items-center gap-3 px-5 h-12 border-b border-stone-100 bg-white/95 backdrop-blur-sm">
+        <Link
+          href="/"
+          className="text-[10px] font-mono text-stone-400 hover:text-stone-600 tracking-widest transition-colors"
+        >
+          ← HOME
+        </Link>
+        <span className="text-stone-200">|</span>
+        <span className="text-[10px] font-mono text-stone-600 tracking-widest">
+          SCENT LANDSCAPE
+        </span>
 
-      {/* ── Tabs ───────────────────────────────────────────────────────── */}
-      <div className="px-6 pt-6 pb-4">
-        <div className="max-w-4xl mx-auto flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 ml-4">
           {TABS.map((id) => (
             <button
               key={id}
               onClick={() => setTab(id)}
               className={[
-                "text-[11px] font-mono px-4 py-2 rounded-full border transition-all tracking-widest",
+                "text-[10px] font-mono px-3 py-1 rounded-full border transition-all tracking-widest",
                 tab === id
                   ? "bg-stone-800 text-white border-stone-800"
                   : "bg-white text-stone-500 border-stone-200 hover:border-stone-400",
@@ -76,33 +69,32 @@ export default function AtlasPage() {
               {id}
             </button>
           ))}
-          <span className="ml-auto text-[10px] font-mono text-stone-300">
-            n&nbsp;=&nbsp;{displayAnswers.length}
-          </span>
         </div>
+
+        <span className="ml-auto text-[10px] font-mono text-stone-300">
+          n&nbsp;=&nbsp;{displayAnswers.length}
+        </span>
+      </header>
+
+      {/* ── Full-screen map ────────────────────────────────────────────────── */}
+      <div className="flex-1 overflow-hidden">
+        {displayAnswers.length === 0 ? (
+          <div className="h-full flex items-center justify-center">
+            <p className="text-stone-300 font-mono text-sm tracking-widest">NO DATA</p>
+          </div>
+        ) : (
+          <ScentLandscapeBoard
+            key={tab}
+            answers={displayAnswers}
+            idPrefix={tab.replace(/[^a-zA-Z0-9]/g, "_")}
+            onSelect={setSelected}
+            fullscreen
+          />
+        )}
       </div>
 
-      {/* ── Landscape boards ───────────────────────────────────────────── */}
-      <div className="px-6 pb-20">
-        <div className="max-w-4xl mx-auto">
-          {displayAnswers.length === 0 ? (
-            <div className="h-64 flex items-center justify-center border border-stone-100 rounded-2xl">
-              <p className="text-stone-300 font-mono text-sm tracking-widest">NO DATA</p>
-            </div>
-          ) : (
-            /* ALL: all answers on one board; individual: filtered answers */
-            <ScentLandscapeBoard
-              key={tab}
-              answers={displayAnswers}
-              idPrefix={tab.replace(/[^a-zA-Z0-9]/g, "_")}
-              onSelect={setSelected}
-            />
-          )}
-        </div>
-      </div>
-
-      {/* ── Detail panel (click) ────────────────────────────────────────── */}
+      {/* ── Detail panel (click) ──────────────────────────────────────────── */}
       <ScentDetailPanel answer={selected} onClose={() => setSelected(null)} />
-    </main>
+    </div>
   );
 }

@@ -224,6 +224,7 @@ type Props = {
   macaronLabel?: string;          // shown as section header in ALL mode
   idPrefix?: string;              // unique prefix for SVG filter IDs
   onSelect: (answer: SurveyAnswer) => void;
+  fullscreen?: boolean;           // fill parent container, hide legend
 };
 
 export default function ScentLandscapeBoard({
@@ -231,6 +232,7 @@ export default function ScentLandscapeBoard({
   macaronLabel,
   idPrefix = "wc",
   onSelect,
+  fullscreen = false,
 }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
@@ -247,9 +249,9 @@ export default function ScentLandscapeBoard({
   const fsm = `${idPrefix}-sm`;
 
   return (
-    <div className="mb-12">
+    <div className={fullscreen ? "h-full flex flex-col" : "mb-12"}>
       {/* Section label (ALL mode) */}
-      {macaronLabel && (
+      {macaronLabel && !fullscreen && (
         <p className="text-[10px] font-mono text-stone-300 tracking-[0.3em] uppercase mb-3">
           {macaronLabel}
         </p>
@@ -257,7 +259,9 @@ export default function ScentLandscapeBoard({
 
       {/* SVG canvas */}
       <div
-        className="relative rounded-2xl overflow-hidden border border-stone-100 shadow-sm"
+        className={fullscreen
+          ? "relative flex-1 overflow-hidden"
+          : "relative rounded-2xl overflow-hidden border border-stone-100 shadow-sm"}
         onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
         onMouseLeave={() => {
           setHoveredId(null);
@@ -267,6 +271,7 @@ export default function ScentLandscapeBoard({
         <svg
           viewBox={`0 0 ${W} ${H}`}
           width="100%"
+          height={fullscreen ? "100%" : undefined}
           style={{ display: "block" }}
         >
           <defs>
@@ -402,16 +407,18 @@ export default function ScentLandscapeBoard({
       </div>
 
       {/* Legend */}
-      <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-0.5">
-        {answers.map((answer, i) => (
-          <LegendRow
-            key={answer.id}
-            answer={answer}
-            index={i}
-            onClick={() => onSelect(answer)}
-          />
-        ))}
-      </div>
+      {!fullscreen && (
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-0.5">
+          {answers.map((answer, i) => (
+            <LegendRow
+              key={answer.id}
+              answer={answer}
+              index={i}
+              onClick={() => onSelect(answer)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
