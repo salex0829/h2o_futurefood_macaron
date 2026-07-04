@@ -302,6 +302,12 @@ export default function ScentLandscapeBoard({
             fill="none" stroke="#EDE8E0" strokeWidth={0.6}
           />
 
+          {/* Axis labels */}
+          <text x={32} y={H / 2} textAnchor="start" fontSize={10} fontFamily="monospace" fill="#C8C2BC" style={{ pointerEvents: "none", userSelect: "none" }}>自然的</text>
+          <text x={W - 32} y={H / 2} textAnchor="end" fontSize={10} fontFamily="monospace" fill="#C8C2BC" style={{ pointerEvents: "none", userSelect: "none" }}>都市的</text>
+          <text x={W / 2} y={28} textAnchor="middle" fontSize={10} fontFamily="monospace" fill="#C8C2BC" style={{ pointerEvents: "none", userSelect: "none" }}>近い</text>
+          <text x={W / 2} y={H - 18} textAnchor="middle" fontSize={10} fontFamily="monospace" fill="#C8C2BC" style={{ pointerEvents: "none", userSelect: "none" }}>遠い</text>
+
           {/* Shapes */}
           {answers.map((answer, i) => {
             const { x, y }   = layout[answer.id] ?? { x: 0, y: 0 };
