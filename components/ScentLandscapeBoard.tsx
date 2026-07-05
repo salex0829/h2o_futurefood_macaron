@@ -314,7 +314,6 @@ export default function ScentLandscapeBoard({
             const color       = answer.answers.sensedColor.hex;
             const type        = answer.answers.sensedShape.type;
             const name        = answer.answers.scentName;
-            const num         = String(i + 1).padStart(2, "0");
             const isHovered   = hoveredId === answer.id;
 
             return (
@@ -364,19 +363,6 @@ export default function ScentLandscapeBoard({
 
                 {/* Invisible hit area for consistent hover/click across all shape types */}
                 <circle r={44} fill="transparent" />
-
-                {/* Number annotation */}
-                <text
-                  y={-50}
-                  textAnchor="middle"
-                  fontSize={8.5}
-                  fontFamily="monospace"
-                  fontWeight={isHovered ? "700" : "500"}
-                  fill={isHovered ? "#5A5450" : "#A09890"}
-                  style={{ pointerEvents: "none", userSelect: "none" }}
-                >
-                  {num}
-                </text>
 
                 {/* Scent name */}
                 <text
